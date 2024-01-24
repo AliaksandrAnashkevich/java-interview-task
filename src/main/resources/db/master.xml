@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+  <include file="/db/changeset/2024.01.20_1000_create_users_table.xml"/>
+  <include file="/db/changeset/2024.01.20_1030_create_bank_accounts_table.xml"/>
+  <include file="/db/changeset/2024.01.20_1100_create_operations_table.xml"/>
+  <include file="/db/changeset/2024.01.20_1210_insert_users_data.xml"/>
+  <!--  <include  file="/db/changeset/2024.01.20_1230_insert_bank_accounts_data.xml"/>-->
+  <!--  <include  file="/db/changeset/2024.01.20_1250_insert_operations_data.xml"/>-->
+</databaseChangeLog>

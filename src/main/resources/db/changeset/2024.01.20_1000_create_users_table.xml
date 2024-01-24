@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+  <changeSet id="2024.01.20_1000_create_users_sequence" author="aliaksandr anashkevich">
+    <createSequence sequenceName="user_id_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <changeSet id="2024.01.20_1010_create_users_table" author="aliaksandr anashkevich">
+    <createTable tableName="users">
+      <column name="id" type="bigint" defaultValueComputed="nextval('user_id_seq')">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="first_name" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="last_name" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="document_number" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="document_type" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>

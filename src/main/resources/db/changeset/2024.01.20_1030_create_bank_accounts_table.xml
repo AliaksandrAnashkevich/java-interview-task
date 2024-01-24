@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+  <changeSet id="2024.01.20_1030_create_bank_accounts_sequence" author="aliaksandr anashkevich">
+    <createSequence sequenceName="bank_account_id_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <changeSet id="2024.01.20_1040_create_bank_accounts_table" author="aliaksandr anashkevich">
+    <createTable tableName="bank_accounts">
+      <column name="id" type="bigint" defaultValueComputed="nextval('bank_account_id_seq')">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="code" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="amount" type="money">
+        <constraints nullable="false"/>
+      </column>
+      <column name="user_id" type="bigint">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>

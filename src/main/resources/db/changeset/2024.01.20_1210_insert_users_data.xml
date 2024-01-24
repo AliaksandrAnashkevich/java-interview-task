@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+  <changeSet id="2024.01.20_1210_insert_users_data" author="aliaksandr anashkevich">
+    <sql>
+      BEGIN TRANSACTION;
+
+      WITH person AS(
+      INSERT INTO users (first_name, last_name, document_type, document_number) VALUES
+      ('Elon', 'Mask', 'DRIVER_LICENSE', 'ElonMask001') RETURNING id)
+      INSERT INTO bank_accounts (code, amount, user_id) VALUES
+      ('ElonMask001_1', 99.99, (SELECT id FROM person)),
+      ('ElonMask001_2', 59.99, (SELECT id FROM person));
+
+      WITH person AS(
+      INSERT INTO users (first_name, last_name, document_type, document_number) VALUES
+      ('Tony', 'Stark', 'PASSPORT', 'Tony777') RETURNING id)
+      INSERT INTO bank_accounts (code, amount, user_id) VALUES
+      ('Tony777_1', 199.99, (SELECT id FROM person));
+
+      COMMIT;
+    </sql>
+  </changeSet>
+</databaseChangeLog>

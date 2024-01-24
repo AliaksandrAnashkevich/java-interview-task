@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+  http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+  <changeSet id="2024.01.20_1100_create_operations_sequence" author="aliaksandr anashkevich">
+    <createSequence sequenceName="operation_id_seq" startValue="1" incrementBy="1"/>
+  </changeSet>
+
+  <changeSet id="2024.01.20_1130_create_operations_table" author="aliaksandr anashkevich">
+    <createTable tableName="operations">
+      <column name="id" type="bigint" defaultValueComputed="nextval('operation_id_seq')">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="amount_payment" type="money">
+        <constraints nullable="false"/>
+      </column>
+      <column name="amount_after" type="money">
+        <constraints nullable="false"/>
+      </column>
+      <column name="type" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="status" type="varchar(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="date_time" type="timestamp without time zone">
+        <constraints nullable="true"/>
+      </column>
+      <column name="account_id" type="bigint">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>
